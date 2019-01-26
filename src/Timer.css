@@ -1,0 +1,20 @@
+.DisplayBox {
+	width: 50%;
+	align-content: center;
+	justify-content: center;
+}
+
+
+.Timer {
+	display: flex;
+	align-content: center;
+	justify-content: center;
+	flex-flow: column;
+	margin: 20px;
+	padding: 40px;
+	border: 2px solid #00D8FF;
+	background: #DDEEFF;
+}
+
+
+
