@@ -164,7 +164,6 @@ class Countdown extends Component {
   render() {
     return(
       <div>
-        
         <div className="Countdown">M: {this.state.time.m} S: {this.state.time.s} </div>
         <div className="Button">
         	<button onClick={this.handleTimer}>{this.state.isRunning ? 'Stop' : 'Start'}</button>

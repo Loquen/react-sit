@@ -8,10 +8,10 @@ class Navbar extends Component {
 		return(
 			<div className="Navbar">
 				<ul className="nav">
-					<li className="title">Sit!</li>
-					<li className="item">Time</li>
-					<li className="item">Set</li>
-					<li className="item">Track</li>
+					<li className="title"><a href="#">Sit!</a></li>
+					<li className="item"><a href="#">Time</a></li>
+					<li className="item"><a href="#">Set</a></li>
+					<li className="item"><a href="#">Track</a></li>
 				</ul>
 				
 			</div>

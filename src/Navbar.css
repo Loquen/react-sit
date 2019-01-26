@@ -10,11 +10,11 @@ li {
 	list-style: none;
 }
 
+
 .nav {
 	padding: 10px;
 	display: flex;
 	justify-content: space-around;
-    background: #eee;
 }
 
 .nav li {
