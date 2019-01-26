@@ -1,0 +1,33 @@
+html {
+	box-sizing: border-box;
+}
+
+.Navbar {
+	
+}
+
+li {
+	list-style: none;
+}
+
+.nav {
+	padding: 10px;
+	display: flex;
+	justify-content: space-around;
+    background: #eee;
+}
+
+.nav li {
+	
+}
+
+.title {
+	margin-right: auto;
+	padding-left: 10px;
+
+}
+
+.item {
+	flex-basis: auto;
+	padding-right: 10px;
+}
