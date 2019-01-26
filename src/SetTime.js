@@ -14,28 +14,42 @@ class SetTime extends Component {
 
 	    this.handleChange = this.handleChange.bind(this);
 	    this.handleSubmit = this.handleSubmit.bind(this);
+	    this.calculateTotalSeconds = this.calculateTotalSeconds.bind(this);
 	}
 
+	// Calculates the total number of seconds the user has inputed
+	calculateTotalSeconds() {
+		// define total as the seconds plus the minutes*60 plus the hours*3600
+		let total = Number(this.state.second) + Number(this.state.minute * 60) + Number(this.state.hour * 3600);
+		console.log(total); 
+
+		this.setState({ totalSeconds: total }, () => {
+			console.log(this.state.totalSeconds);
+		});
+
+	}
 
 	handleChange(event) {
 	    const target = event.target;
     	const value = target.value;
     	const name = target.name;
 
-    	this.setState({
-      		[name]: value
-    	});
+    	if(value >= 0) {
+	    	this.setState({
+	      		[name]: value
+	    	});
+		} else {
+			alert("Value cannot be negative");
+		}
 	}
 
     handleSubmit(event) {
-	    console.log('An time was submitted: ' + this.state.hour + ':'+ this.state.minute + ':' + this.state.second);
+
+	    console.log('A time was submitted: ' + this.state.hour + ':'+ this.state.minute + ':' + this.state.second);
+	    this.calculateTotalSeconds();
 	    event.preventDefault();
 	}
 
-	// Calculates the total number of seconds the user has inputed
-	calculateTotalSeconds(){
-
-	}
 
 	render() {
 	    return (
