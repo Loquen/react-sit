@@ -8,55 +8,56 @@ class SetTime extends Component {
 	    this.state = {
 	    	hour: 1,
 	    	minute: 0,
-	    	second: 0
+	    	second: 0,
+	    	totalSeconds: 0
 	    };
 
 	    this.handleChange = this.handleChange.bind(this);
 	    this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
+
 	handleChange(event) {
-	    this.setState({hour: event.target.hour});
+	    const target = event.target;
+    	const value = target.value;
+    	const name = target.name;
+
+    	this.setState({
+      		[name]: value
+    	});
 	}
 
     handleSubmit(event) {
-	    console.log('An hour was submitted: ' + this.state.hour);
+	    console.log('An time was submitted: ' + this.state.hour + ':'+ this.state.minute + ':' + this.state.second);
 	    event.preventDefault();
+	}
+
+	// Calculates the total number of seconds the user has inputed
+	calculateTotalSeconds(){
+
 	}
 
 	render() {
 	    return (
 	        <form onSubmit={this.handleSubmit}>
 	        	<label>
-	          		Hour: 
-	          		<input type="number" value={this.state.hour} onChange={this.handleChange} />
+	          		Hours: 
+	          		<input name="hour" type="number" value={this.state.hour} onChange={this.handleChange} />
+	        	</label>
+	        	<label>
+	          		Minutes: 
+	          		<input name="minute" type="number" value={this.state.minute} onChange={this.handleChange} />
+	        	</label>
+	        	<label>
+	          		Seconds: 
+	          		<input name="second" type="number" value={this.state.second} onChange={this.handleChange} />
 	        	</label>
 	        	<input type="submit" value="Set Time" />
 	        </form>
 	    );
+	    // TODO: Convert submitted values into totalSeconds 
+	    //	   	 pass that totalSeconds up to Countdown.js
   	}
 }
-/*
-  render() {
-    return(
-      <div>
-        <form>
-  			Enter the number of hours, minutes and seconds:
-  			<input type="number" name="hour" min="0" max="10" value="1"/>
-  			
-  			<input type="submit"/>
-		</form>
-
-		 <form>
-  			Enter the number of hours, minutes and seconds:
-			<input type="number" name="minute" min="0" max ="60" value="0"/>
-  			<input type="submit"/>
-		</form>
-
-  			<input type="number" name="second" min="0" max ="60" value="0"/>
-      </div>
-    );
-  }
-}*/
 
 export default SetTime;
