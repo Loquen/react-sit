@@ -10,7 +10,6 @@ class Navbar extends Component {
 				<ul className="nav">
 					<li className="title"><a href="#">Sit!</a></li>
 					<li className="item"><a href="#">Time</a></li>
-					<li className="item"><a href="#">Set</a></li>
 					<li className="item"><a href="#">Track</a></li>
 				</ul>
 				

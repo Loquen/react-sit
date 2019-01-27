@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './Countdown.css';
 
+import SetTime from './SetTime';
+
 class Countdown extends Component {
 
   constructor() {
@@ -13,7 +15,8 @@ class Countdown extends Component {
 		    			  br: 300,
 		    			  finalBreak: 900, 
 		    			  pomodoro: 1,
-		    			  isRunning: false
+		    			  isRunning: false,
+                userSetTime: 0
     			 		};  
     this.state = { ...this.initialState }; // to preserve the initial state
     this.timer = 0;
@@ -161,18 +164,28 @@ class Countdown extends Component {
   	}
   }
 
+  setTimeCallback = (userSeconds) => {
+    // Now we have the userSeconds that need to be converted and updated in the timer
+    this.setState({ userSetTime: userSeconds });
+  }
+
   render() {
     return(
       <div>
-        <div className="Countdown">M: {this.state.time.m} S: {this.state.time.s} </div>
+        <div className="Countdown">
+          <span className="timeValue">H: {this.state.time.h}</span>
+          <span className="timeValue">M: {this.state.time.m}</span>
+          <span className="timeValue"> S: {this.state.time.s} </span>
+        </div>
         <div className="Button">
         	<button onClick={this.handleTimer}>{this.state.isRunning ? 'Stop' : 'Start'}</button>
-        	&nbsp;
-        	&nbsp;
         	<button onClick={this.resetTimer}>Reset</button>
         </div>
         <div>
           <audio id="bell" ref="audio_tag" src="https://upload.wikimedia.org/wikipedia/commons/1/15/Bicycle-bell.wav"/>
+        </div>
+        <div className="SetTime">
+          <SetTime setTimeInParent={ this.setTimeCallback }/>
         </div>
       </div>
     );

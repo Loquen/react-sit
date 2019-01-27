@@ -3,7 +3,7 @@ import './App.css';
 
 import Navbar from './Navbar';
 import Timer from './Timer';
-import SetTime from './SetTime';
+
 import Footer from './Footer';
 
 
@@ -12,7 +12,6 @@ const App = () => {
     <div className="App">
       <Navbar/>
       <Timer/>
-      <SetTime/>
       <Footer/>
     </div>
   );

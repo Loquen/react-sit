@@ -21,7 +21,6 @@ class SetTime extends Component {
 	calculateTotalSeconds() {
 		// define total as the seconds plus the minutes*60 plus the hours*3600
 		let total = Number(this.state.second) + Number(this.state.minute * 60) + Number(this.state.hour * 3600);
-		console.log(total); 
 
 		this.setState({ totalSeconds: total }, () => {
 			console.log(this.state.totalSeconds);
@@ -44,25 +43,26 @@ class SetTime extends Component {
 	}
 
     handleSubmit(event) {
-
 	    console.log('A time was submitted: ' + this.state.hour + ':'+ this.state.minute + ':' + this.state.second);
 	    this.calculateTotalSeconds();
+
+	    this.props.setTimeInParent(this.state.totalSeconds);
 	    event.preventDefault();
 	}
 
 
 	render() {
 	    return (
-	        <form onSubmit={this.handleSubmit}>
-	        	<label>
+	        <form className="setForm" onSubmit={this.handleSubmit}>
+	        	<label className="time">
 	          		Hours: 
 	          		<input name="hour" type="number" value={this.state.hour} onChange={this.handleChange} />
 	        	</label>
-	        	<label>
+	        	<label className="time">
 	          		Minutes: 
 	          		<input name="minute" type="number" value={this.state.minute} onChange={this.handleChange} />
 	        	</label>
-	        	<label>
+	        	<label className="time">
 	          		Seconds: 
 	          		<input name="second" type="number" value={this.state.second} onChange={this.handleChange} />
 	        	</label>
