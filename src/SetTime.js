@@ -22,10 +22,11 @@ class SetTime extends Component {
 		// define total as the seconds plus the minutes*60 plus the hours*3600
 		let total = Number(this.state.second) + Number(this.state.minute * 60) + Number(this.state.hour * 3600);
 
-		this.setState({ totalSeconds: total }, () => {
+		/*this.setState({ totalSeconds: total }, () => {
 			console.log(this.state.totalSeconds);
-		});
+		});*/
 
+		return total;
 	}
 
 	handleChange(event) {
@@ -44,9 +45,10 @@ class SetTime extends Component {
 
     handleSubmit(event) {
 	    console.log('A time was submitted: ' + this.state.hour + ':'+ this.state.minute + ':' + this.state.second);
-	    this.calculateTotalSeconds();
+	    
+	    let seconds = this.calculateTotalSeconds();
 
-	    this.props.setTimeInParent(this.state.totalSeconds);
+	    this.props.setTimeInParent(seconds);
 	    event.preventDefault();
 	}
 
