@@ -8,12 +8,18 @@ class Countdown extends Component {
   constructor() {
     super();
     // Set intial timer to 1500s or 25min
-    this.initialState = { 
+    /*this.initialState = { 
       time: {}, 
       seconds: 1500,
 		  isRunning: false,
-    };  
-    this.state = { ...this.initialState }; // to preserve the initial state
+    };  */
+    this.state = { 
+      time: {}, 
+      seconds: 1500,
+      isRunning: false,
+      userSeconds: 0
+    }; 
+
     this.timer = 0;
   }
 
@@ -77,7 +83,7 @@ class Countdown extends Component {
   		this.stopTimer();
   	}
 
-  	this.setState( this.initialState, () => {
+  	this.setState({seconds: this.state.userSeconds}, () => {
       console.log("Resetting timer");
       this.componentDidMount();
     });
@@ -111,17 +117,20 @@ class Countdown extends Component {
 
   setTimeCallback = (userSeconds) => {
     // Now we have the userSeconds that need to be converted and updated in the timer
-    this.setState({ seconds: userSeconds }, () => {
-      console.log(this.state.seconds);
+    this.setState({ 
+      userSeconds: userSeconds,
+      seconds: userSeconds
+      }, () => {
+        console.log(this.state.seconds);
 
-      // Stop the timer if it's running 
-      if(this.state.isRunning){
-        this.stopTimer();
-      }
+        // Stop the timer if it's running 
+        if(this.state.isRunning){
+          this.stopTimer();
+        }
 
-      let timeLeftVar = this.secondsToTime(this.state.seconds);
-      this.setState({ time: timeLeftVar });
-      // Here we can also reset the time with the new value we've just received
+        let timeLeftVar = this.secondsToTime(this.state.seconds);
+        this.setState({ time: timeLeftVar });
+        
     });
   }
 
