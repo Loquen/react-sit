@@ -17,7 +17,7 @@ class Countdown extends Component {
       time: {}, 
       seconds: 1500,
       isRunning: false,
-      userSeconds: 0
+      userSeconds: 1500
     }; 
 
     this.timer = 0;
